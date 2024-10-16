@@ -5,6 +5,7 @@ import uvicorn
 from schemas import User
 from aioredis import ConnectionPool
 
+@asynccontextmanager
 async def get_redis(app: FastAPI):
     try:
         app.state.redis = await aioredis.from_url(url='redis://127.0.0.1', encoding='utf-8', decode_responses=True)
